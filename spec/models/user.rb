@@ -5,11 +5,16 @@ class User < ActiveRecord::Base
 
   has_one :group, through: :account
 
+  has_one :info,  foreign_key: :user_id,
+                  class_name: "User::Info"
+
+  has_one :avatar, through: :info
+
   model_cache do
     with_key
     with_attribute :login
     with_method :last_post, :bad_iv_name!, :bad_iv_name?, :admin?, :hash_with_class_key
-    with_association :posts, :account, :images, :group
+    with_association :posts, :account, :images, :group, :avatar, :info
     with_class_method :default_name, :user_with_id, :user_with_email,
                       :users_with_ids, :users_with_ids_in, :user_with_attributes
   end

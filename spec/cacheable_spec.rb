@@ -147,4 +147,11 @@ describe Cacheable do
       end
     end
   end
+
+  describe "namespaced class name" do
+    it "should bind together" do
+      debugger
+      ""
+    end
+  end
 end

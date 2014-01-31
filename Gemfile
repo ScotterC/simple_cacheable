@@ -6,6 +6,7 @@ gemspec
 gem 'appraisal'
 gem "sqlite3"
 gem "memcached"
+gem 'byebug'
 
 # TODO: Appraisal Platforms coming
 # https://github.com/thoughtbot/appraisal/pull/69

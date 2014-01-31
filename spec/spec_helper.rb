@@ -10,6 +10,7 @@ require 'mocha/api'
 require 'memcached'
 require 'cacheable'
 require 'friendly_id'
+require 'byebug'
 
 ActiveRecord::Base.send(:include, Cacheable)
 
@@ -26,6 +27,7 @@ require 'models/tag'
 require 'models/post'
 require 'models/user'
 require 'models/descendant'
+require 'models/user/info'
 
 ActiveRecord::Migration.verbose = false
 ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ':memory:')
@@ -51,6 +53,12 @@ RSpec.configure do |config|
       create_table :users do |t|
         t.string :login
         t.string :email
+      end
+
+      create_table :user_infos do |t|
+        t.integer :user_id
+        t.string :name
+        t.string :website
       end
 
       create_table :accounts do |t|
